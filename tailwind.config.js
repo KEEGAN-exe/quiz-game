@@ -5,9 +5,8 @@ export default {
     fontFamily: {
       tek: ['"Tektur"', 'cursive']
     },
-    extend: {}
+    extend: {
+    }
   },
-  plugins: [
-    require('tailwindcss-animated')
-  ]
+  plugins: [require('tailwindcss-animated')]
 }
