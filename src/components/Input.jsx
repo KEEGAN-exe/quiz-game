@@ -13,7 +13,7 @@ export const Input = () => {
   }
 
   return (
-    <div className="h-[20%] flex items-center justify-center bg-neutral-800 rounded-t-2xl flex-col">
+    <div className="w-full flex items-center justify-center bg-neutral-800 lg:rounded-t-2xl flex-col py-10">
       <div className="flex items-center justify-center w-full">
         <input
           className="bg-neutral-800 2xl:w-[25%] lg:w-[40%] py-[12px] px-4 outline-none rounded-md shadow-lg shadow-stone-900 h-auto border-gray-500 focus:ring-2 focus:ring-emerald-200/50 border-[1px] focus:border-emerald-400 transition-all ease-in-out duration-200 text-gray-100 w-[80%]"
