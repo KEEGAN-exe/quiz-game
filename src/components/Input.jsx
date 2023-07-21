@@ -6,9 +6,22 @@ export const Input = () => {
 
   function handleInput() {
     if (input === '' || input === null || input === undefined) {
-      alert('No hay nada')
+      alert('Ingrese una respuesta')
     } else {
       console.log(input)
+      fetch('http://localhost:3000/input', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ input })
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.message === 'Correcto') alert('Correcto')
+          else alert(data.message)
+        })
+        .catch((err) => console.log(err))
     }
   }
 

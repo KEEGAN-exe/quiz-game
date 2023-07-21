@@ -3,10 +3,20 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { atomDark } from 'react-syntax-highlighter/dist/esm/styles/prism'
 
 export const Quiz = () => {
-  const [time, setTime] = useState(10)
-  const [question, setQuestion] = useState(
-    'cual es el resultado del siguiente ?'
-  )
+  const [time, setTime] = useState(0)
+  const [code, setCode] = useState('Preparando pregunta ...')
+
+  useEffect(() => {
+    fetch('http://localhost:3000/question')
+      .then((res) => res.json())
+      .then((data) => {
+        setCode(data.functionResult)
+        setTime(data.time)
+        console.log(data)
+        console.log(data.result)
+      })
+  }, [])
+
   useEffect(() => {
     if (time === 0) {
       return
@@ -17,30 +27,7 @@ export const Quiz = () => {
 
     return () => clearTimeout(timer)
   }, [time])
-  const codeString = `function isPerfectNumber(num) {
-    let sum = 0;
-    for (let i = 1; i < num; i++) {
-      if (num % i === 0) {
-        sum += i;
-      }
-    }
-    return sum === num;
-  }
-  
-  function findPerfectNumber(limit) {
-    const perfectNumbers = [];
-    for (let num = 1; num <= limit; num++) {
-      if (isPerfectNumber(num)) {
-        perfectNumbers.push(num);
-      }
-    }
-    return perfectNumbers;
-  }
-  
-  // Ejemplo: Encontrar números perfectos hasta 10000
-  const limit = 10000;
-  const perfectNumbers = findPerfectNumber(limit);
-  console.log('Números perfectos hasta', limit, ':', perfectNumbers);`
+  const codeString = code
   return (
     <div className="flex justify-center items-center h-full w-full">
       <div className=" h-full w-full flex justify-around lg:justify-center lg:gap-20 items-center lg:flex-row flex-col">
@@ -64,7 +51,7 @@ export const Quiz = () => {
             <h1 className="text-white my-2 lg:text-2xl">PREGUNTAAAAAA</h1>
             <div className="w-full">
               <p className="bg-zinc-900 p-4 rounded-lg overflow-auto break-all">
-                {question}
+              cual es el resultado del siguiente codigo?
               </p>
             </div>
             <div className="mt-4">
