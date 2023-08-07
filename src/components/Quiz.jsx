@@ -29,7 +29,7 @@ export const Quiz = () => {
   }, [time])
   const codeString = code
   return (
-    <div className="flex justify-center items-center h-full w-full">
+    <div className="flex justify-center items-center h-full w-full relative">
       <div className=" h-full w-full flex justify-around lg:justify-center lg:gap-20 items-center lg:flex-row flex-col">
         <div className="rounded-md lg:w-[40%] px-6 w-full">
           <SyntaxHighlighter
@@ -51,7 +51,7 @@ export const Quiz = () => {
             <h1 className="text-white my-2 lg:text-2xl">PREGUNTAAAAAA</h1>
             <div className="w-full">
               <p className="bg-zinc-900 p-4 rounded-lg overflow-auto break-all">
-              cual es el resultado del siguiente codigo?
+                cual es el resultado del siguiente codigo?
               </p>
             </div>
             <div className="mt-4">
